@@ -32,7 +32,10 @@ const VeoStudio: React.FC = () => {
   // Update selected model when mode changes
   useEffect(() => {
     if (mode === "create-video") {
-      setSelectedModel("veo-3.0-generate-001");
+      // Only set default if current model is not a video model
+      if (!selectedModel.includes("veo")) {
+        setSelectedModel("veo-3.0-generate-001");
+      }
     } else if (mode === "edit-image" || mode === "compose-image") {
       setSelectedModel("gemini-2.5-flash-image-preview");
     } else if (mode === "create-image") {
