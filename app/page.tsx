@@ -11,7 +11,6 @@ import Image from "next/image";
 import { Upload, Film, Image as ImageIcon } from "lucide-react";
 import Composer from "@/components/ui/Composer";
 import VideoPlayer from "@/components/ui/VideoPlayer";
-import { Skeleton } from "@/components/ui/skeleton";
 
 type VeoOperationName = string | null;
 
@@ -676,42 +675,42 @@ const VeoStudio: React.FC = () => {
             <div className="w-full max-w-3xl">
               {((mode === "edit-image" && !imageFile && !generatedImage) ||
                 (mode === "create-video" && !imageFile && !generatedImage)) && (
-                <div
-                  className={`rounded-lg border-2 border-dashed p-8 cursor-pointer transition-colors ${"bg-white/10 border-gray-300/70 hover:bg-white/30"}`}
-                  onClick={() => {
-                    // Trigger single file input
-                    const input = document.getElementById(
-                      "single-image-input"
-                    ) as HTMLInputElement;
-                    input?.click();
-                  }}
-                >
-                  <div className="flex flex-col items-center gap-3 text-slate-800/80">
-                    <Upload className="w-8 h-8" />
-                    <div className="text-center">
-                      <div className="font-medium text-lg">
-                        Drop an image here, or click to upload
-                      </div>
-                      <div className="text-sm opacity-80 mt-1">
-                        PNG, JPG, WEBP up to 10MB
-                      </div>
-                      {mode === "edit-image" &&
-                        (imageFile || generatedImage) && (
-                          <div className="text-sm mt-2 text-green-600">
-                            ✓ Image selected
-                          </div>
-                        )}
+                  <div
+                    className={`rounded-lg border-2 border-dashed p-8 cursor-pointer transition-colors ${"bg-white/10 border-gray-300/70 hover:bg-white/30"}`}
+                    onClick={() => {
+                      // Trigger single file input
+                      const input = document.getElementById(
+                        "single-image-input"
+                      ) as HTMLInputElement;
+                      input?.click();
+                    }}
+                  >
+                    <div className="flex flex-col items-center gap-3 text-slate-800/80">
+                      <Upload className="w-8 h-8" />
+                      <div className="text-center">
+                        <div className="font-medium text-lg">
+                          Drop an image here, or click to upload
+                        </div>
+                        <div className="text-sm opacity-80 mt-1">
+                          PNG, JPG, WEBP up to 10MB
+                        </div>
+                        {mode === "edit-image" &&
+                          (imageFile || generatedImage) && (
+                            <div className="text-sm mt-2 text-green-600">
+                              ✓ Image selected
+                            </div>
+                          )}
 
-                      {mode === "create-video" &&
-                        (imageFile || generatedImage) && (
-                          <div className="text-sm mt-2 text-green-600">
-                            ✓ Image selected for video generation
-                          </div>
-                        )}
+                        {mode === "create-video" &&
+                          (imageFile || generatedImage) && (
+                            <div className="text-sm mt-2 text-green-600">
+                              ✓ Image selected for video generation
+                            </div>
+                          )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
               {mode === "edit-image" && imageFile && uploadedImageUrl && (
                 <div className="w-full max-w-4xl aspect-video overflow-hidden rounded-lg border relative mx-auto">
@@ -730,10 +729,10 @@ const VeoStudio: React.FC = () => {
                 mode === "compose-image" ||
                 mode === "create-video"
               ) && (
-                <div className="text-stone-400 select-none text-center w-full">
-                  Nothing to see here
-                </div>
-              )}
+                  <div className="text-stone-400 select-none text-center w-full">
+                    Nothing to see here
+                  </div>
+                )}
 
               {/* Hidden file inputs - always available */}
               <input
